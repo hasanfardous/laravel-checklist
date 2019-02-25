@@ -62,7 +62,7 @@ Route::group(['middleware' => 'diva'], function () {
         'as'    => 'delete-project'
     ]);
 
-    // Feedbacks Routes
+    // Common Feedbacks Routes
     Route::get('feedbacks/all', [
         'uses'  => 'CommonFeedbacksController@index',
         'as'    => 'all-feedbacks'
@@ -108,4 +108,17 @@ Route::group(['middleware' => 'diva'], function () {
         'uses'  => 'ProjectsController@deleteFeedback',
         'as'    => 'delete-feedback'
     ]);
+
+    Route::post('feedback/add/{id}', [
+        'uses'  => 'ProjectsController@secondaryFeedbackStore',
+        'as'    => 'secondary-feedback'
+    ]);
+
+
+    // Feedbacks Routes
+    Route::post('feedback/add-new/', [
+        'uses'  => 'ProjectsController@newFeedbackAdd',
+        'as'    => 'new-feedback-add'
+    ]);
+    
 });

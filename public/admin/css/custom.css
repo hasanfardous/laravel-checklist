@@ -1,0 +1,8 @@
+.single-project .approved td:first-child {
+    text-decoration: line-through;
+    color: #00a65a;
+}
+.single-project .rejected td:first-child {
+    text-decoration: none;
+    color: inherit;
+}

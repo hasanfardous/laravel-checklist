@@ -100,7 +100,8 @@ class ProjectsController extends Controller
         $feedbacks = Feedback::where('project_id', $id)->get();
 
         return view('admin.projects.single-project', [
-            'feedbacks' => $feedbacks
+            'feedbacks' => $feedbacks,
+            'project_id' => $id
         ]);
     }
 
@@ -132,6 +133,28 @@ class ProjectsController extends Controller
         $feedback->delete();
 
         return 'Deleted';
+    }
+
+    public function secondaryFeedbackStore(Request $request, $id){
+        $feedback = Feedback::find($request->id);
+        $feedback->feedback_sec = $request->feedbackSec;
+        $feedback->save();
+
+        return 'Secondary feedback added';
+    }
+
+
+
+    public function newFeedbackAdd(Request $request){
+        $feedback = new Feedback();
+        
+        $feedback->project_id     = $request->project_id;
+        $feedback->feedback       = $request->newFeedback;
+        $feedback->feedback_sec   = '';
+        $feedback->feedback_status = 0;
+        $feedback->save();
+
+        return redirect('projects/view/'.$request->project_id)->with('success', 'Feedback added');
     }
 
     /**

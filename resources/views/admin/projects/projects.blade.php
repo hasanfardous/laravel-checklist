@@ -69,7 +69,7 @@
                             <span class="label {{ $project->status == 0 ? 'label-warning' : 'label-success' }}">{{ $project->status == 0 ? 'Pending' : 'Approved' }}</span>
                         </td>
                         <td class="text-right">
-                            <a href="{{ route('view-project', ['id' => $project->id]) }}"><span class="label label-info">View</span></a>
+                            <a href="{{ route('view-project', ['id' => $project->id]) }}" target="_blank"><span class="label label-info">View</span></a>
                             <a href="{{ route('edit-project', ['id' => $project->id]) }}"><span class="label label-warning">Edit</span></a>
                             <a href="{{ route('delete-project', ['id' => $project->id]) }}"><span class="label label-danger" onclick="return confirm('Are you sure, to delete this item?')">Delete</span></a>
                         </td>
